@@ -38,6 +38,8 @@ class BenutzerTest {
         Benutzer benutzer = new Benutzer("John", "Ion", sports);
         assertEquals(benutzer.kalkuliereZeit(fussball), 65);
         assertEquals(benutzer.kalkuliereZeit(basketball), 55);
+        assertEquals(benutzer.kalkuliereZeit(hindernislauf), 30);
+        assertEquals(benutzer.kalkuliereZeit(hochsprung), 20);
     }
 
 
@@ -48,8 +50,12 @@ class BenutzerTest {
         Basketball basketball = new Basketball();
         Hindernislauf hindernislauf = new Hindernislauf();
         Hochsprung hochsprung = new Hochsprung();
-        double a = fussball.kalkuliereZeit(), b= basketball.kalkuliereZeit(), c  = hindernislauf.kalkuliereZeit(),
-                d = hochsprung.kalkuliereZeit();
-        assertEquals((double)170/4, (a+b+c+d)/4);
+        ArrayList<Sport> sports = new ArrayList<Sport>();
+        sports.add(fussball);
+        sports.add(basketball);
+        sports.add(hindernislauf);
+        sports.add(hochsprung);
+        Benutzer benutzer = new Benutzer("John", "Ion", sports);
+        assertEquals((double) 170/4, benutzer.kalkuliereDurchschnittszeit());
     }
 }
