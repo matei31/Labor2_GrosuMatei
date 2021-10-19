@@ -1,16 +1,23 @@
 package com.company;
 
-import com.company.Sport;
-
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classname: Benutzer
+ * Date: 19.10.2021
+ * @author Grosu Matei
+ */
 public class Benutzer {
     private String vorName;
     private String nachName;
-    private List<Sport> sport;
+    private final List<Sport> sport;
 
-    //constructor
+    /**
+     * Constructor
+     * @param vorName first name
+     * @param nachName surname
+     * @param sport the list of sports
+     */
     public Benutzer(String vorName, String nachName, List<Sport> sport) {
         this.vorName = vorName;
         this.nachName = nachName;
@@ -18,30 +25,56 @@ public class Benutzer {
     }
 
     //getters
-    public String getVorName(){return vorName;}
-    public String getNachName(){return nachName;}
-    public List<Sport> getSport(){return sport;}
+    public String getVorName() {
+        return vorName;
+    }
+
+    public String getNachName() {
+        return nachName;
+    }
+
+    public List<Sport> getSport() {
+        return sport;
+    }
 
     //setters
-    public void setVorName(String vorName){this.vorName = vorName;}
-    public void setNachName(String nachName){this.nachName = nachName;}
+    public void setVorName(String vorName) {
+        this.vorName = vorName;
+    }
 
+    public void setNachName(String nachName) {
+        this.nachName = nachName;
+    }
 
-    public double kalkuliereZeit(){
-        double sum=0;
-        for(Sport x: sport)
-            sum+=x.kalkuliereZeit();
+    /**
+     *
+     * @return the total time for all sports in the list
+     */
+    public double kalkuliereZeit() {
+        double sum = 0;
+        for (Sport x : sport)
+            sum += x.kalkuliereZeit();
         return sum;
     }
-    public double kalkuliereZeit(Sport s){
-        for(Sport x: sport)
-            {
-                if(x == s)
-                    return x.kalkuliereZeit();
-            }
+
+    /**
+     *
+     * @param s the sport for which we want to calculate time
+     * @return the time required for a sport s
+     */
+    public double kalkuliereZeit(Sport s) {
+        for (Sport x : sport) {
+            if (x == s)
+                return x.kalkuliereZeit();
+        }
         return -1;
     }
-    public double kalkuliereDurchschnittszeit(){
-        return kalkuliereZeit()/sport.size();
+
+    /**
+     *
+     * @return the average time required for all sports in the list
+     */
+    public double kalkuliereDurchschnittszeit() {
+        return kalkuliereZeit() / sport.size();
     }
 }
